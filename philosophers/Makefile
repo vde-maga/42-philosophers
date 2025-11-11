@@ -6,7 +6,7 @@
 #    By: vde-maga <vde-maga@student.42porto.co      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/10 10:36:25 by vde-maga          #+#    #+#              #
-#    Updated: 2025/11/10 10:41:42 by vde-maga         ###   ########.fr        #
+#    Updated: 2025/11/11 14:23:04 by vde-maga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,6 +62,7 @@ $(NAME): $(OBJS)
 	@printf "%b\n" "$(YELLOW)Linking Object Files to make $(NAME)...$(RESET)"
 	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) -o $(NAME)
 	@printf "%b\n" "$(GREEN)Done! Execute ./$(NAME)$(RESET)"
+	@printf "%b\n" "$(YELLOW)NBR_PHILOS TIME_DIE TIME_EAT TIME_SLEEP EAT_TIMES$(RESET)"
 
 # ---------------------- Compiling ---------------------------------------------
 

@@ -6,12 +6,22 @@
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 13:25:45 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/11/10 14:46:07 by vde-maga         ###   ########.fr       */
+/*   Updated: 2025/11/11 13:15:20 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
+
+typedef enum e_event_id
+{
+	DEAD,
+	EAT,
+	THINK,
+	SLEEP,
+	FORK,
+	DROP,
+}	t_event_id;
 
 typedef struct s_stats
 {

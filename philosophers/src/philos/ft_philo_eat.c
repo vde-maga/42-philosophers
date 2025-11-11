@@ -6,7 +6,7 @@
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 17:21:15 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/11/10 18:34:30 by vde-maga         ###   ########.fr       */
+/*   Updated: 2025/11/11 13:44:16 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ void	ft_philo_eat(t_philo *philo)
 {
 	ft_philo_pick_forks(philo);
 	pthread_mutex_lock(&philo->stats->monitoring_mutex);
-	philo->last_meat_time = ft_get_time();
+	philo->last_meal_time = ft_get_time();
 	philo->eaten_meals = philo->eaten_meals + 1;
 	pthread_mutex_unlock(&philo->stats->monitoring_mutex);
-	ft_philos_monitoring(philo, EAT);
-	usleep(philo->stats->time_to_eat * MICROSEC);
+	ft_philo_monitoring(philo, EAT);
+	usleep(philo->stats->time_to_eat * 1000);
 	ft_philo_drop_forks(philo);
 }

@@ -6,7 +6,7 @@
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+ m>     */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 10:53:23 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/11/10 15:00:16 by vde-maga         ###   ########.fr       */
+/*   Updated: 2025/11/11 13:54:27 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ int	ft_is_all_numbers(char **argv)
 	int	j;
 
 	i = 1;
-	while (argv[1])
+	while (argv[i])
 	{
 		j = 0;
 		while (argv[i][j])
 		{
-			if (ft_isdigit(argv[i][j]))
+			if (!ft_isdigit(argv[i][j]))
 				return (1);
 			j++;
 		}
