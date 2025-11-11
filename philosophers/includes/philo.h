@@ -6,14 +6,12 @@
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 10:57:19 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/11/11 14:12:08 by vde-maga         ###   ########.fr       */
+/*   Updated: 2025/11/11 15:19:41 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
-
-# define PHILO_MAX_COUNT 200
 
 # define DEAD_MSG "is dead \n"
 # define EAT_MSG "is eating \n"
