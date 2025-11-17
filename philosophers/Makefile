@@ -6,7 +6,7 @@
 #    By: vde-maga <vde-maga@student.42porto.co      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/10 10:36:25 by vde-maga          #+#    #+#              #
-#    Updated: 2025/11/17 14:34:24 by vde-maga         ###   ########.fr        #
+#    Updated: 2025/11/17 17:20:01 by vde-maga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,12 +74,18 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
+tester: re
+	@printf "%b\n" "$(CYAN)\n Cloning Online Tester $<... $(RESET)"
+	@git clone https://github.com/dantonik/42-philosophers-tester.git
+	@cd 42-philosophers-tester && ./test.sh
 
 # ---------------------- Cleaning ----------------------------------------------
 
 clean:
 	@printf "%b\n" "$(CYAN)\n Cleaning Object Files $(RESET)"
 	@$(RM) $(OBJ_DIR)
+	@printf "%b\n" "$(CYAN)\n Cleaning Tester Files $(RESET)"
+	@$(RM) 42-philosophers-tester
 	@printf "%b\n" "$(GREEN) Done Cleaning Object Files $(RESET)"
 
 
@@ -90,4 +96,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re tester
