@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_simulation_handle_one_philo.c                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/10 10:42:28 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/11/17 12:17:10 by vde-maga         ###   ########.fr       */
+/*   Created: 2025/11/14 13:12:46 by vde-maga          #+#    #+#             */
+/*   Updated: 2025/11/17 12:12:59 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int argc, char **argv)
+int	ft_simulation_handle_one_philo(t_table *table)
 {
-	t_table	table;
+	long long	time;
 
-	if (ft_arguments_check(argc, argv) == 1)
-		return (EXIT_FAILURE);
-	if (ft_init_table(&table, argc, argv) == 1)
-		return (EXIT_FAILURE);
-	if (table.num_philos == 1)
-		ft_simulation_handle_one_philo(&table);
-	else if (ft_simulation_start_simulation(&table) == 1)
-	{
-		ft_error(&table, "Simulation Error");
-		return (EXIT_FAILURE);
-	}
-	ft_free(&table);
-	return (EXIT_SUCCESS);
+	time = ft_time_get_time();
+	table->start_time = ft_time_get_time();
+	table->philosophers[0].last_meal = table->start_time;
+	ft_print_status(&table->philosophers[0], FORK_TAKEN);
+	ft_time_precise_sleep(table->time_to_die);
+	printf("%d %d %s\n", table->time_to_die, table->philosophers[0].id, "died");
+	return (0);
 }

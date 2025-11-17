@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   ft_philo_eat.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/10 12:32:09 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/11/11 14:58:07 by vde-maga         ###   ########.fr       */
+/*   Created: 2025/11/14 15:35:37 by vde-maga          #+#    #+#             */
+/*   Updated: 2025/11/14 15:37:47 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_free(t_stats *stats, pthread_mutex_t *forks, t_philo *philo)
+int	ft_philo_eat(t_philo *philo)
 {
-	int	i;
-
-	if (stats)
-		pthread_mutex_destroy(&stats->monitoring_mutex);
-	if (forks)
-	{
-		i = -1;
-		while (++i < stats->nbr_of_philo)
-		{
-			pthread_mutex_destroy(&forks[i]);
-			philo[i].left_fork = NULL;
-			philo[i].right_fork = NULL;
-		}
-		free(forks);
-		forks = NULL;
-	}
-	if (philo)
-	{
-		free(philo);
-		philo = NULL;
-	}
+	ft_print_status(philo, EATING);
+	pthread_mutex_lock(&philo->table->last_meal_mutex);
+	philo->last_meal = ft_time_get_time();
+	pthread_mutex_unlock(&philo->table->last_meal_mutex);
+	philo->meals_eaten++;
+	ft_time_precise_sleep(philo->table->time_to_eat);
+	ft_philo_drop_forks(philo);
+	return (0);
 }

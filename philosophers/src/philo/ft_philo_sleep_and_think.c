@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_philo_sleep.c                                   :+:      :+:    :+:   */
+/*   ft_philo_sleep_and_think.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/10 18:15:09 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/11/11 13:41:38 by vde-maga         ###   ########.fr       */
+/*   Created: 2025/11/14 15:39:57 by vde-maga          #+#    #+#             */
+/*   Updated: 2025/11/14 15:40:54 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_philo_sleep(t_philo *philo)
+int	ft_philo_sleep_and_think(t_philo *philo)
 {
-	ft_philo_monitoring(philo, SLEEP);
-	usleep(philo->stats->time_to_sleep * 1000);
+	ft_print_status(philo, SLEEPING);
+	ft_time_precise_sleep(philo->table->time_to_sleep);
+	ft_print_status(philo, THINKING);
+	return (0);
 }

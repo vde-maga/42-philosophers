@@ -6,50 +6,32 @@
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+ m>     */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 10:53:23 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/11/11 15:31:38 by vde-maga         ###   ########.fr       */
+/*   Updated: 2025/11/13 17:02:41 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_is_all_numbers(char **argv)
-{
-	int	i;
-	int	j;
-
-	i = 1;
-	while (argv[i])
-	{
-		j = 0;
-		while (argv[i][j])
-		{
-			if (!ft_isdigit(argv[i][j]))
-				return (1);
-			j++;
-		}
-		i++;
-	}
-	return (0);
-}
-
 int	ft_arguments_check(int argc, char **argv)
 {
-	if ((argc != 5 && argc != 6) || ft_is_all_numbers(argv) == 1)
+	int	i;
+
+	if (argc < 5 || argc > 6)
+		return (ft_error(NULL, "Invalid Number of Arguments"), 1);
+	i = 1;
+	while (i < argc)
 	{
-		ft_error(NULL, NULL, NULL, "Error: Invalid Number of Arguments");
-		return (1);
+		if (ft_parsing_is_valid_number(argv[i]) == 1)
+			return (ft_error(NULL, "Invalid Argument Format"), 1);
+		if (ft_parsing_check_limits(argv[i]) == 1)
+			return (ft_error(NULL, "Argument Too Large"), 1);
+		i++;
 	}
-	if (ft_atoi(argv[1]) > 200)
-	{
-		ft_error(NULL, NULL, NULL,
-				"Error: Please dont use more than 200 Philosophers");
+	if (ft_parsing_check_philo_number(argv[1]) == 1)
 		return (1);
-	}
-	if (ft_atoi(argv[2]) < 60 || ft_atoi(argv[3]) < 60 || ft_atoi(argv[4]) < 60)
-	{
-		ft_error(NULL, NULL, NULL,
-				"Error: Time specified less than 60ms");
+	if (ft_parsing_check_time_values(argv) == 1)
 		return (1);
-	}
+	if (argc == 6 && ft_atoi(argv[5]) < 1)
+		return (ft_error(NULL, "Meals Number Must Be Positive"), 1);
 	return (0);
 }

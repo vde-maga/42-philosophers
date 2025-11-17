@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_philos_routine.c                                :+:      :+:    :+:   */
+/*   ft_philo_routine.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/10 16:47:23 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/11/11 13:42:29 by vde-maga         ###   ########.fr       */
+/*   Created: 2025/11/14 14:48:26 by vde-maga          #+#    #+#             */
+/*   Updated: 2025/11/14 15:34:05 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	*ft_philos_routine(void *_philo)
+void	*ft_philo_routine(void *philosopher_void)
 {
 	t_philo	*philo;
 
-	philo = (t_philo *)_philo;
-	if (philo->stats->nbr_of_philo == 1)
+	philo = (t_philo *)philosopher_void;
+	if (philo->id % 2 == 0)
+		usleep(1000);
+	while (ft_monitor_philo_check_someone_died(philo->table) != 1)
 	{
-		ft_philo_monitoring(philo, FORK);
-		return (NULL);
-	}
-	while (1)
-	{
-		pthread_mutex_lock(&philo->stats->monitoring_mutex);
-		if (philo->stats->simulation_should_end)
-		{
-			pthread_mutex_unlock(&philo->stats->monitoring_mutex);
+		if (ft_philo_take_forks(philo) != 0)
 			break ;
-		}
-		pthread_mutex_unlock(&philo->stats->monitoring_mutex);
-		ft_philo_eat(philo);
-		ft_philo_sleep(philo);
-		ft_philo_monitoring(philo, THINK);
+		if (ft_philo_eat(philo) != 0)
+			break ;
+		if (ft_philo_sleep_and_think(philo) != 0)
+			break ;
+		usleep(200);
 	}
 	return (NULL);
 }

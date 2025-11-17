@@ -10,13 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#define RESET   "\x1b[0m"
-#define BLACK   "\x1b[30m"
-#define RED     "\x1b[31m"
-#define GREEN   "\x1b[32m"
-#define YELLOW  "\x1b[33m"
-#define BLUE    "\x1b[34m"
-#define MAGENTA "\x1b[35m"
-#define CYAN    "\x1b[36m"
-#define WHITE   "\x1b[37m"
-#define BOLD_TEXT "\x1b[1m"
+#ifndef COLORS_H
+# define COLORS_H
+
+# define RED "\033[0;31m"
+# define GREEN "\033[0;32m"
+# define YELLOW "\033[0;33m"
+# define BLUE "\033[0;34m"
+# define PURPLE "\033[0;35m"
+# define CYAN "\033[0;36m"
+# define RESET "\033[0m"
+# define BOLD "\033[1m"
+# define WHITE "\033[0;97m"
+# define MAGENTA "\033[0;95m"
+
+#endif
