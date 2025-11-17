@@ -19,7 +19,7 @@ int	ft_monitor_check_simulation_end(t_table *table)
 		pthread_mutex_lock(&table->death_mutex);
 		table->someone_died = 1;
 		pthread_mutex_unlock(&table->death_mutex);
-		printf("Every Philosopher had %d meals\n", table->must_eat);
+		printf("Every Philosopher had " GREEN"%d" RESET " meals\n", table->must_eat);
 		return (1);
 	}
 	return (0);

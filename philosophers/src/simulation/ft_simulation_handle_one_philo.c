@@ -21,6 +21,6 @@ int	ft_simulation_handle_one_philo(t_table *table)
 	table->philosophers[0].last_meal = table->start_time;
 	ft_print_status(&table->philosophers[0], FORK_TAKEN);
 	ft_time_precise_sleep(table->time_to_die);
-	printf("%d %d %s\n", table->time_to_die, table->philosophers[0].id, "died");
+	printf(BOLD "%4d " RESET CYAN "%2i " RED "%16s \n" RESET, table->time_to_die, table->philosophers[0].id, "died");
 	return (0);
 }

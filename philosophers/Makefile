@@ -6,7 +6,7 @@
 #    By: vde-maga <vde-maga@student.42porto.co      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/10 10:36:25 by vde-maga          #+#    #+#              #
-#    Updated: 2025/11/13 15:26:35 by vde-maga         ###   ########.fr        #
+#    Updated: 2025/11/17 14:34:24 by vde-maga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ OBJ_DIR = obj
 INC_DIR = includes
 
 # Compiling Flags
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g -pthread
 INCLUDES = -I$(INC_DIR)
 
 # SRCs Find
