@@ -26,8 +26,9 @@ int	ft_monitor_check_philosopher_is_death(t_table *table, int i)
 		{
 			table->someone_died = 1;
 			pthread_mutex_lock(&table->print_mutex);
-			printf(WHITE "%4lld " RESET BOLD "%2i " RED "%16s \n" RESET, time,
-				table->philosophers->id, "died");
+			printf(BOLD "%4lld " RESET CYAN "%2i " RESET RED "%16s \033[0m\n" RESET,
+				ft_time_diff(table->start_time, ft_time_get_time()),
+				table->philosophers[i].id, "died");
 			pthread_mutex_unlock(&table->print_mutex);
 		}
 		pthread_mutex_unlock(&table->death_mutex);
