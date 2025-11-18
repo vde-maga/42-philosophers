@@ -6,7 +6,7 @@
 /*   By: vde-maga <vde-maga@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 15:42:32 by vde-maga          #+#    #+#             */
-/*   Updated: 2025/11/17 10:52:13 by vde-maga         ###   ########.fr       */
+/*   Updated: 2025/11/18 15:51:04 by vde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_monitor_check_philosopher_is_death(t_table *table, int i)
 		{
 			table->someone_died = 1;
 			pthread_mutex_lock(&table->print_mutex);
-			printf(BOLD "%4lld " RESET CYAN "%2i " RESET RED "%16s \033[0m\n" RESET,
+			printf(BOLD "%4lld " CYAN "%2i " RED "%16s \033[0m\n" RESET,
 				ft_time_diff(table->start_time, ft_time_get_time()),
 				table->philosophers[i].id, "died");
 			pthread_mutex_unlock(&table->print_mutex);
